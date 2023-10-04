@@ -24,3 +24,18 @@ export const DELETE = async (req: NextRequest) => {
 
   return NextResponse.json({});
 };
+
+export const PUT = async (req: NextRequest) => {
+  const { isbn, author, title, price, categoryId} = await req.json()
+
+  const post = await prisma.books.update({
+      where: {
+          isbn: String(isbn)
+      },
+      data: {
+          isbn, author, title, price, categoryId
+      }
+  })
+
+  return NextResponse.json({ post })
+};
