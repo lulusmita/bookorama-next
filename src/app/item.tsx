@@ -11,6 +11,7 @@ const Item = ({ book }: Props) => {
   const router = useRouter();
 
   const handleDelete = async (isbn: string) => {
+    console.log(isbn);
     await fetch("/api/book?isbn=" + isbn, {
       method: "DELETE",
     });
