@@ -28,5 +28,6 @@
   },
   "main": "index.js",
   "author": "attaf-riski <atafriski27@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": "https://github.com/ergeau/bookorama-next.git"
 }
