@@ -8,6 +8,18 @@ export const GET = async (req: NextRequest) => {
   return NextResponse.json({ books });
 };
 
+export const POST = async (req: NextRequest) => {
+  const { isbn,author,title,price,categoryId } = await req.json()
+
+  const books = await prisma.books.create({
+      data: {
+          isbn,author,title,price,categoryId
+      }
+  })
+
+  return NextResponse.json({ books })
+}
+
 export const DELETE = async (req: NextRequest) => {
   const url = new URL(req.url).searchParams;
   const isbn = String(url.get("isbn")) || "";
