@@ -3,6 +3,18 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+export const POST = async (req: NextRequest) => {
+  const { isbn,author,title,price,categoryId } = await req.json()
+
+  const books = await prisma.books.create({
+      data: {
+          isbn,author,title,price,categoryId
+      }
+  })
+
+  return NextResponse.json({ books })
+}
+
 export const GET = async (req: NextRequest) => {
   const books = await prisma.books.findMany();
   return NextResponse.json({ books });
